@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+#React TypeScript tutorial
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+-//react typeScript docs
+https://create-react-app.dev/docs/adding-typescript/
 
-## Available Scripts
+-This tutorial is helping me refresh on
+typescript react.
 
-In the project directory, you can run:
+https://www.youtube.com/watch?v=FJDVKeh7RJI
 
-### `npm start`
+-tutorial created by roadsidecode on freeCodeCamp youtube page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## TypeScript Basics
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+let name: string;
+let age: number | string; //| is called a union gives type options
+let isStudent: boolean;
+let hobbies: string[]; // string array
+let role: [number, string]; /_must match the type is called a tuple_/
 
-### `npm test`
+//two ways to define a function
+let printName: Function;
+let printName2: (name: string) => void; //the return type can be a datatype or void if nothing is returned
+let printName3: (name: string) => never; //void returns undefined never returns nothing
+//instead of - any use - unknown
+let personName4: unknown;
+// type Person = {
+// name: string;
+// age?: number; //? makes property optional
+// };
+// let person: Person = {
+// name: "DeShawn",
+// };
+// console.log(person);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// let lotsOfPeople: Person[] = [
+// { name: "Reid", age: 35 },
+// { name: "Angela", age: 33 },
+// ];
 
-### `npm run build`
+//aliases are type and interface
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+interface Person {
+name: string;
+age?: number;
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+//extending interface
+interface Guy extends Person {
+profession: string;
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+//extending types (adding types together with type &)
+type X = {
+a: string;
+b: number;
+};
+type Y = X & {
+c: string;
+d: number;
+};
 
-### `npm run eject`
+let y: Y = {
+c: "string",
+d: 4,
+a: "string",
+b: 3,
+};
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+//extending type with interfaces
+type Z = Person & {
+a: string;
+b: number;
+};
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+//extending interfaces
+interface Person2 extends X {
+name: string;
+age?: number;
+}
